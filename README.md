@@ -15,3 +15,6 @@ pip install discord.py
 pip install ffmpeg
 
 pip install PyNacl
+
+#Additional Feature
+Can see the forecast by using !w city_name command (like !w texas)
