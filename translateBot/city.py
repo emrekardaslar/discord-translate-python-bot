@@ -10,7 +10,7 @@ class City:
       url = ""
 
       def __init__(self,name):
-            self.url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid=8310d0bdfed84872959abfeb47e4eab7".format(name)
+            self.url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid=APIKEY".format(name)
             r = requests.get(url = self.url)
             data = r.json()
             self.name = data['name']
