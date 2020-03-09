@@ -1,6 +1,8 @@
-import discord, ffmpeg
+import discord, ffmpeg, requests
 from gtts import gTTS
 from discord.ext import commands
+from city import City
+
 bot = commands.Bot(command_prefix="!")
 
 @bot.event
@@ -33,5 +35,12 @@ async def t2s(ctx,arg1,arg2):
     channel = ctx.author.voice.channel
     await text2Speech(arg1,arg2,ctx,channel)
     #await ctx.send("Lang is {} and the sentence is:  {} ".format(arg1,arg2))
+
+@bot.command(name='w')
+async def weather(ctx,city):
+    city = City(city)
+    strCity = city.getData()
+    print(strCity)
+    await ctx.send(strCity)
 
 bot.run(token)
