@@ -13,7 +13,7 @@ class City:
             self.url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid=8310d0bdfed84872959abfeb47e4eab7".format(name)
             r = requests.get(url = self.url)
             data = r.json()
-            self.name = name
+            self.name = data['name']
             self.weather = data['weather'][0]['main']
             self.tempKelvin = data['main']['temp']
 
