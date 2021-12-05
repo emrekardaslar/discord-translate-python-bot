@@ -8,6 +8,7 @@ from gtts import gTTS
 
 from bot_features.city import City
 from bot_features.corona import Corona
+from bot_features.currency import Currency
 from video import *
 from yaml import safe_load
 
@@ -102,13 +103,12 @@ async def speech2Text(ctx):
             print(text)
             await ctx.send("You said : {}".format(text))
 
-            if (text == 'hava kaç derece'):
+            if text == 'hava kaç derece':
                 await weather(ctx, language, name='Ankara')
             else:
                 await text2Speech(language, text, ctx, channel)
         except:
             await ctx.send("Sorry could not recognize what you said")
-            # print("Sorry could not recognize what you said")
 
 
 async def speech2Text(ctx, language):
@@ -157,6 +157,12 @@ async def corona(ctx, *argv):
         corona.listCountries()
         info = corona.getData(argv[0])
         await ctx.send(info)
+
+
+@bot.command(name='cur')
+async def currency(ctx, name):
+    cur = Currency()
+    await ctx.send(cur.getInfo(name))
 
 
 async def play(ctx, url):
