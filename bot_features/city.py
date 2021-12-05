@@ -3,11 +3,6 @@ from yaml import safe_load
 
 
 class City:
-    name = ""
-    weather = ""
-    tempKelvin = ""
-    url = ""
-
     def __init__(self, name):
         self.token = self.setToken()
         self.url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}".format(

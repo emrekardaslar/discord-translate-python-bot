@@ -160,9 +160,14 @@ async def corona(ctx, *argv):
 
 
 @bot.command(name='cur')
-async def currency(ctx, name):
+async def currency(ctx, *argv):
     cur = Currency()
-    await ctx.send(cur.getInfo(name))
+    if len(argv) == 3:
+        await ctx.send(cur.exchangeWith(argv[0], argv[1], argv[2]))
+    elif len(argv) == 2:
+        await ctx.send(cur.getInfoWithAmount(argv[0], argv[1]))
+    else:
+        await ctx.send(cur.getInfo(argv[0]))
 
 
 async def play(ctx, url):
