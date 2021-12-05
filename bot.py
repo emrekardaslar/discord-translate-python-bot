@@ -6,7 +6,8 @@ import urllib.request
 import speech_recognition as sr
 from gtts import gTTS
 
-from city import City
+from bot_features.city import City
+from bot_features.corona import Corona
 from video import *
 from yaml import safe_load
 
@@ -138,6 +139,24 @@ async def youtube(ctx, *, search):
     url = 'http://www.youtube.com/watch?v=' + search_results[0]
     await ctx.send(url)
     await play(ctx, url)
+
+
+@bot.command(name='covid')
+async def corona(ctx, *argv):
+    if argv[0] == 'help':
+        corona = Corona()
+        countriesList = corona.listCountries()
+        res = ''
+        for country in countriesList:
+            res += country + '\n'
+            if len(res) >= 180:
+                await ctx.send(res)
+                res = ''
+    else:
+        corona = Corona()
+        corona.listCountries()
+        info = corona.getData(argv[0])
+        await ctx.send(info)
 
 
 async def play(ctx, url):
