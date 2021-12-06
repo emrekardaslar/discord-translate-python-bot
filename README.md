@@ -8,14 +8,25 @@ To use, type !t language "desired sentence". For example:
 !t fr "Général Kenobi"
 
 # Libraries needed to be installed: 
-Simply install those libraries by using those command lines: 
+Install libraries by:
+```
+pip install -r requirements.txt
+```
+Additionally
 
-pip install discord.py
+```
+pip install PyAudio
+```
 
-pip install ffmpeg
+If you face problems installing PyAudio on Windows:
 
-pip install PyNacl
+Download pyaudio wheel from https://www.lfd.uci.edu/~gohlke/pythonlibs/ and pip install.
 
-# Additional Feature
+(https://stackoverflow.com/questions/53866104/pyaudio-failed-to-install-windows-10/53866322)
 
-Can see the forecast by using !w city_name command (like !w texas)
+
+# Additional Features
+
+* Can get the forecast data by using !w city_name command (like !w texas)
+* Can get covid data by using !covid country_name
+* Can get currency data by using !cur amount cur-from cur-to
